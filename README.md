@@ -473,3 +473,5 @@ This project is licensed under the [MIT License](LICENSE).
 <p align="center">
   Built with Next.js, Three.js, and Stripe
 </p>
+#   G r a v i t y - S h o p  
+ 
