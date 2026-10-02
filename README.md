@@ -1,477 +1,328 @@
 <p align="center">
-  <strong>🪐 GRAVITY SHOP</strong>
+  <h1 align="center">🪐 Gravity Shop</h1>
+  <p align="center">
+    <strong>A Production-Grade 3D E-Commerce Platform</strong>
+  </p>
+  <p align="center">
+    Built with Next.js 14, Three.js / React Three Fiber, MongoDB Atlas, and Stripe.
+  </p>
 </p>
 
 <p align="center">
-  A full-stack 3D e-commerce platform built with Next.js, Three.js, and Stripe.
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Next.js-14-black?logo=next.js" alt="Next.js 14" />
-  <img src="https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white" alt="React 18" />
-  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/MongoDB-Atlas-47A248?logo=mongodb&logoColor=white" alt="MongoDB" />
-  <img src="https://img.shields.io/badge/Stripe-Payments-635BFF?logo=stripe&logoColor=white" alt="Stripe" />
-  <img src="https://img.shields.io/badge/Three.js-3D-000000?logo=three.js&logoColor=white" alt="Three.js" />
-  <img src="https://img.shields.io/badge/License-MIT-green" alt="License" />
+  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js 14" /></a>
+  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 18" /></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" /></a>
+  <a href="https://threejs.org/"><img src="https://img.shields.io/badge/Three.js-WebGL-000000?style=for-the-badge&logo=three.js&logoColor=white" alt="Three.js" /></a>
+  <a href="https://www.mongodb.com/"><img src="https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" /></a>
+  <a href="https://stripe.com/"><img src="https://img.shields.io/badge/Stripe-Payments-635BFF?style=for-the-badge&logo=stripe&logoColor=white" alt="Stripe" /></a>
+  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" /></a>
 </p>
 
 ---
 
-## Overview
+## 📖 Table of Contents
 
-Gravity Shop is a production-grade e-commerce storefront that combines WebGL-powered 3D product visualization with a complete checkout and admin management system. Customers browse products rendered in interactive 3D scenes, add items to a cart, and complete purchases through Stripe Checkout. Administrators manage products, users, orders, inventory, and store settings through a protected dashboard.
-
-The application is server-rendered with Next.js 14 App Router, backed by MongoDB Atlas, and secured with JWT authentication verified cryptographically at the Edge middleware layer.
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+  - [Customer Storefront](#customer-storefront)
+  - [Admin Dashboard](#admin-dashboard)
+  - [Security & Performance](#security--performance)
+- [Tech Stack](#-tech-stack)
+- [System Architecture](#-system-architecture)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Environment Variables](#environment-variables)
+  - [Database & Third-Party Setup](#database--third-party-setup)
+- [Usage & Scripts](#-usage--scripts)
+- [API Reference](#-api-reference)
+- [License](#-license)
 
 ---
 
-## Features
+## 🚀 Overview
 
-### Customer Experience
-- **3D Product Visualization** — Interactive product scenes built with React Three Fiber and Drei
-- **Product Browsing** — Grid layout with category filtering and real-time search
-- **Search Palette** — Command-palette-style search with keyboard navigation (`Ctrl+K`)
-- **Shopping Cart** — Slide-out cart drawer with quantity management and live totals
-- **Cart Animations** — Fly-to-cart micro-animations using Framer Motion
-- **Stripe Checkout** — Secure payment flow via Stripe Checkout Sessions
-- **User Accounts** — Registration, login, and order history
-- **Responsive Design** — Glassmorphism UI with gradient backgrounds and dark theme
+**Gravity Shop** is a modern, high-performance e-commerce web application that merges interactive WebGL 3D product rendering with an enterprise-grade shopping and admin experience.
+
+Customers can interactively inspect products in real-time 3D environments, search with an instant command palette (`Ctrl+K`), manage their shopping cart with fluid micro-animations, and check out securely via Stripe. Administrators gain access to a powerful analytics dashboard to monitor real-time metrics, manage inventory, track customer orders, update store configuration, and handle user accounts.
+
+---
+
+## ✨ Key Features
+
+### Customer Storefront
+- 🎨 **3D Interactive Visualizer**: Dynamic product canvas rendering powered by `@react-three/fiber` and `@react-three/drei`.
+- 🔍 **Instant Search Palette**: Command-K style quick search modal for immediate product discovery.
+- 🛒 **Animated Cart Drawer**: Slide-out cart with live total calculations and smooth Framer Motion flight animations.
+- 💳 **Seamless Checkout**: Integrated server-side Stripe Checkout session creation.
+- 👤 **Customer Accounts**: Full authentication with order history and profile management.
+- 📱 **Fully Responsive**: Dark glassmorphic design optimized across mobile, tablet, and desktop viewports.
 
 ### Admin Dashboard
-- **Product Management** — Create, edit, and delete products with image and 3D model uploads
-- **Inventory Control** — Real-time stock levels with low-stock alerts
-- **Order Management** — View, filter, and update order statuses
-- **User Management** — Search, paginate, toggle roles, activate/deactivate accounts
-- **Analytics** — Revenue charts, top-selling products, monthly trends (Recharts)
-- **Store Settings** — Business configuration persisted to MongoDB
+- 📊 **Real-time Analytics**: Visualized revenue charts, monthly sales trends, and top-selling product metrics powered by Recharts.
+- 📦 **Product CRUD & Asset Upload**: Manage product inventory with support for multi-image uploads and 3D `.glb` models via Cloudinary.
+- 🗃️ **Inventory Control**: Instant stock adjustments with low-stock alerts.
+- 📑 **Order Fulfillments**: Filter, inspect, and update order statuses in real-time.
+- 👥 **User Management**: Role assignment (Admin vs User), account activation/deactivation, and search.
+- ⚙️ **Store Settings**: Persisted configuration for store details, currency, payment settings, and media assets.
 
-### Security
-- **JWT Authentication** — Issued on login/register, stored as HTTP-only cookies
-- **Edge Middleware Protection** — Cryptographic JWT verification via `jose` on all `/admin` routes
-- **Webhook Signature Validation** — Stripe webhook payloads verified with `constructEvent()`
-- **Rate Limiting** — Sliding-window limiter on sensitive endpoints via Upstash Redis
-- **Password Hashing** — bcrypt with salt rounds
-
-### Commerce
-- **Stripe Checkout Sessions** — Server-side session creation with line items from database
-- **Webhook Fulfillment** — Automatic order status transition and inventory decrement on payment
-- **Atomic Transactions** — MongoDB transactions wrap fulfillment to prevent partial updates
-- **Idempotent Processing** — Duplicate webhook deliveries are safely ignored
+### Security & Performance
+- 🔐 **Cryptographic Edge Middleware**: JWT verification powered by `jose` running on Next.js Edge Middleware for protected `/admin` routes.
+- 🛡️ **Stripe Webhook Verification**: Cryptographic signature validation ensuring tamper-proof payment processing.
+- ⚡ **Rate Limiting**: Sliding-window rate limiting on critical endpoints via Upstash Redis.
+- 🔒 **Secure Auth**: Password hashing using `bcryptjs` with salt rounds and HTTP-only cookies.
+- 🚀 **Dynamic Imports & Code Splitting**: 3D canvas assets lazy-loaded to ensure blazing-fast initial page loads.
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-| Layer | Technology | Purpose |
-|-------|-----------|---------|
-| Framework | Next.js 14 (App Router) | Server/client rendering, API routes, middleware |
-| Language | TypeScript 5 | Type safety across the stack |
-| UI Library | React 18 | Component architecture |
-| 3D Engine | Three.js + React Three Fiber + Drei | WebGL product visualization |
-| Animation | Framer Motion + GSAP | Page transitions and micro-animations |
-| Styling | Tailwind CSS 3 | Utility-first CSS |
-| State | Zustand | Client-side cart and auth state |
-| Database | MongoDB Atlas + Mongoose 9 | Document storage and ODM |
-| Payments | Stripe SDK | Checkout sessions and webhook processing |
-| Media | Cloudinary | Image and 3D model (GLB) hosting |
-| Cache | Upstash Redis | Rate limiting |
-| Auth | jsonwebtoken + jose + bcryptjs | Token signing, edge verification, password hashing |
-| Charts | Recharts | Admin analytics visualization |
-| Icons | Lucide React | UI iconography |
+| Category | Technology | Usage |
+|---|---|---|
+| **Framework** | Next.js 14 (App Router) | Server Components, Client Components, API Routes, Edge Middleware |
+| **Language** | TypeScript 5 | End-to-end static typing |
+| **Styling** | Tailwind CSS 3 | Modern dark/glassmorphic utility styling |
+| **3D Rendering** | Three.js + R3F + Drei | WebGL product canvases & interactive scenes |
+| **Animations** | Framer Motion + GSAP | Page transitions, cart fly animations, micro-interactions |
+| **State Management** | Zustand | Persistent client cart & global state |
+| **Database** | MongoDB Atlas + Mongoose 9 | Document storage & schema definitions |
+| **Payments** | Stripe SDK | Checkout sessions & webhook verification |
+| **Media Hosting** | Cloudinary | CDN asset hosting for product images and `.glb` 3D models |
+| **Rate Limiting** | Upstash Redis | API rate limiting protection |
+| **Auth & Security** | `jose` + `jsonwebtoken` + `bcryptjs` | JWT signing, Edge verification, password hashing |
+| **Analytics** | Recharts | Admin dashboard data visualization |
 
 ---
 
-## Architecture
+## 🏗️ System Architecture
 
 ```mermaid
 graph TB
-    subgraph Client
-        Browser["Browser"]
-        R3F["React Three Fiber"]
-        Zustand["Zustand Store"]
+    subgraph Client Layer
+        Browser["User Browser"]
+        R3F["React Three Fiber (WebGL)"]
+        ZustandStore["Zustand State Store"]
     end
 
-    subgraph Edge
-        MW["Middleware (jose JWT)"]
+    subgraph Edge Layer
+        Middleware["Edge Middleware (jose JWT Guard)"]
     end
 
-    subgraph "Next.js Server"
-        Pages["App Router Pages"]
-        API["API Routes"]
-        Auth["Auth API"]
-        Checkout["Checkout API"]
-        Webhook["Stripe Webhook"]
-        AdminAPI["Admin API"]
+    subgraph Next.js Server Layer
+        AppPages["App Router Pages"]
+        APIRoutes["REST API Routes"]
+        StripeWebhook["Stripe Webhook Handler"]
     end
 
-    subgraph "External Services"
-        MongoDB["MongoDB Atlas"]
-        Stripe["Stripe"]
-        Cloudinary["Cloudinary"]
-        Redis["Upstash Redis"]
+    subgraph External Infrastructure
+        MongoDB[("MongoDB Atlas")]
+        StripeService["Stripe API"]
+        CloudinaryCDN["Cloudinary CDN"]
+        UpstashRedis["Upstash Redis"]
     end
 
-    Browser --> MW
-    MW --> Pages
-    MW --> API
+    Browser --> Middleware
+    Middleware --> AppPages
+    Middleware --> APIRoutes
     Browser --> R3F
-    Browser --> Zustand
+    Browser --> ZustandStore
 
-    Auth --> MongoDB
-    AdminAPI --> MongoDB
-    AdminAPI --> Cloudinary
-    Checkout --> Stripe
-    Checkout --> MongoDB
-    Webhook --> MongoDB
-    API --> Redis
+    APIRoutes --> MongoDB
+    APIRoutes --> CloudinaryCDN
+    APIRoutes --> UpstashRedis
+    APIRoutes --> StripeService
+    StripeWebhook --> StripeService
+    StripeWebhook --> MongoDB
 ```
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```
-gravity-shop/
+Gravity-Shop/
 ├── app/
-│   ├── (admin)/                  # Admin route group
-│   │   ├── analytics/page.tsx    # Revenue & sales dashboard
-│   │   ├── inventory/page.tsx    # Stock management
-│   │   ├── orders/page.tsx       # Order management
-│   │   ├── products/page.tsx     # Product CRUD
-│   │   ├── settings/page.tsx     # Store configuration
-│   │   ├── users/page.tsx        # User management
-│   │   ├── layout.tsx            # Admin sidebar layout
-│   │   └── page.tsx              # Admin dashboard home
+│   ├── (admin)/                  # Protected Admin Route Group
+│   │   ├── analytics/            # Revenue & Sales Performance Dashboard
+│   │   ├── inventory/            # Inventory & Low-Stock Alerts
+│   │   ├── orders/               # Customer Order Fulfillment
+│   │   ├── products/             # Product Management (CRUD & Uploads)
+│   │   ├── settings/             # System & Store Configuration
+│   │   ├── users/                # User Management & Roles
+│   │   └── layout.tsx            # Admin Dashboard Sidebar Layout
 │   ├── (user)/
-│   │   ├── account/page.tsx      # User profile & orders
+│   │   ├── account/              # Customer Profile & Past Orders
 │   │   └── layout.tsx
 │   ├── api/
-│   │   ├── admin/
-│   │   │   ├── analytics/        # GET aggregated stats
-│   │   │   ├── inventory/        # GET/PATCH stock levels
-│   │   │   ├── orders/           # GET/PATCH orders
-│   │   │   ├── products/         # GET/POST products
-│   │   │   ├── settings/         # GET/PUT store settings
-│   │   │   ├── upload/           # POST file uploads
-│   │   │   └── users/            # GET users, PATCH user by ID
-│   │   ├── auth/
-│   │   │   ├── login/            # POST credentials
-│   │   │   └── register/         # POST new account
-│   │   ├── checkout/             # POST Stripe session
-│   │   ├── health/               # GET service status
-│   │   ├── products/             # GET public products
-│   │   ├── search/               # GET search results
-│   │   └── webhooks/stripe/      # POST Stripe events
-│   ├── product/[id]/page.tsx     # Product detail page
-│   ├── layout.tsx                # Root layout
-│   ├── page.tsx                  # Homepage
-│   ├── robots.ts                 # SEO robots
-│   └── sitemap.ts                # SEO sitemap
+│   │   ├── admin/                # Secure Admin API Endpoints
+│   │   ├── auth/                 # Login & Registration Handlers
+│   │   ├── checkout/             # Stripe Session Endpoint
+│   │   ├── health/               # System Health Check
+│   │   ├── products/             # Public Product Queries
+│   │   ├── search/               # Search Palette Endpoint
+│   │   └── webhooks/stripe/      # Webhook Event Fulfillment
+│   ├── product/[id]/             # Dynamic 3D Product Detail Page
+│   ├── layout.tsx                # Global Root Layout
+│   ├── page.tsx                  # Landing Page & Featured Products
+│   ├── robots.ts                 # Dynamic SEO Robots Configuration
+│   └── sitemap.ts                # Dynamic SEO Sitemap
 ├── components/
-│   ├── admin/                    # AdminSidebar, ProductDataGrid, ProductUploadModal, GlowingChart
-│   ├── animations/               # CartFlyAnimation
-│   ├── auth/                     # AuthModal
-│   ├── canvas/                   # Scene, FloatingProduct, Environment
-│   ├── cart/                     # CartDrawer, CartItemCard, CartScene, CartSummary
-│   ├── product/                  # ProductCard3D, ProductGrid, ProductDetails, ProductViewer, etc.
-│   └── ui/                       # Navbar, Hero, SearchPalette, GlassPanel, MagneticCursor, FloatingGradientBackground
+│   ├── admin/                    # Admin Data Grids, Upload Modals, Charts
+│   ├── canvas/                   # R3F Canvas Scenes, Lights, Controls
+│   ├── cart/                     # Cart Drawer, Item Cards, Cart Summaries
+│   ├── product/                  # 3D Product Viewers, Product Cards & Grids
+│   └── ui/                       # Navbar, Hero Section, Search Palette, Glass Panels
 ├── lib/
-│   ├── db/connect.ts             # MongoDB connection singleton
-│   ├── models/
-│   │   ├── User.ts               # User schema (name, email, password, role, isActive)
-│   │   ├── Product.ts            # Product schema (name, slug, price, stock, images, model3d)
-│   │   ├── Order.ts              # Order schema (items, status, stripeSessionId)
-│   │   └── Setting.ts            # Settings schema (key-value store by category)
-│   ├── api-error.ts              # Structured error handling
-│   ├── cloudinary.ts             # Upload helper
-│   ├── env.ts                    # Environment validation
-│   ├── logger.ts                 # Server-side logger
-│   └── rate-limit.ts             # Upstash rate limiter
+│   ├── db/connect.ts             # Mongoose Connection Singleton
+│   ├── models/                   # Schemas for User, Product, Order, Setting
+│   ├── api-error.ts              # Unified API Error Handler
+│   ├── cloudinary.ts             # Media Upload Utility
+│   ├── logger.ts                 # Server-Side Structured Logging
+│   └── rate-limit.ts             # Upstash Redis Sliding-Window Rate Limiter
 ├── store/
-│   └── useAppStore.ts            # Zustand store (cart, auth, UI state)
-├── middleware.ts                 # Edge JWT verification for /admin routes
-├── next.config.mjs
-├── tailwind.config.ts
-├── tsconfig.json
+│   └── useAppStore.ts            # Zustand Global Cart & Auth Store
+├── middleware.ts                 # Edge Middleware Authentication
 └── package.json
 ```
 
 ---
 
-## Installation
+## ⚡ Getting Started
 
-```bash
-# Clone the repository
-git clone https://github.com/ashish7802/Gravity-Shop.git
-cd Gravity-Shop
+### Prerequisites
 
-# Install dependencies
-npm install --legacy-peer-deps
-```
+Ensure you have the following installed on your local machine:
+- **Node.js**: `v18.x` or `v20.x`
+- **npm**: `v9.x` or higher
+- **Git**
 
-> **Note:** The `--legacy-peer-deps` flag is required due to peer dependency conflicts between React 18 and `@react-three/drei`.
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/AKASH-KALSARIYA/Gravity-Shop.git
+   cd Gravity-Shop
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install --legacy-peer-deps
+   ```
 
 ---
 
-## Environment Variables
+### Environment Variables
 
-Create a `.env.local` file in the project root with the following variables:
+Create a `.env.local` file in the root directory and populate it with your service credentials:
 
 ```env
-# MongoDB
-MONGODB_URI=
+# MongoDB Atlas Connection
+MONGODB_URI=mongodb+sandbox_uri_here
 
-# Authentication
-JWT_SECRET=
+# JWT Authentication
+JWT_SECRET=your_super_secret_jwt_key_here
 
-# Stripe
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
-STRIPE_SECRET_KEY=
-STRIPE_WEBHOOK_SECRET=
+# Stripe Payments
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
 
-# Cloudinary
-CLOUDINARY_CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
+# Cloudinary Storage
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
 
-# Upstash Redis
-UPSTASH_REDIS_REST_URL=
-UPSTASH_REDIS_REST_TOKEN=
+# Upstash Redis (Rate Limiting)
+UPSTASH_REDIS_REST_URL=https://...upstash.io
+UPSTASH_REDIS_REST_TOKEN=your_upstash_token
 ```
-
-> **⚠️ Important:** Never commit `.env.local` to version control. The `.gitignore` already excludes it.
 
 ---
 
-## Running Locally
+### Database & Third-Party Setup
+
+#### 1. MongoDB Atlas
+- Create a Cluster on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
+- Create a Database User and whitelist your IP address.
+- Copy your connection string into `MONGODB_URI`.
+
+#### 2. Stripe Setup
+- Retrieve your Publishable Key and Secret Key from the [Stripe Dashboard](https://dashboard.stripe.com/apikeys).
+- For local webhook testing, use the Stripe CLI:
+  ```bash
+  stripe listen --forward-to localhost:3000/api/webhooks/stripe
+  ```
+
+#### 3. Cloudinary Setup
+- Retrieve your Cloud Name, API Key, and Secret from your [Cloudinary Console](https://cloudinary.com/console).
+- Uploaded product images will auto-organize into `gravity-shop/images/` and 3D models into `gravity-shop/models/`.
+
+#### 4. Setting Up an Admin Account
+To create your first admin account:
+1. Register a standard user through the UI at `/admin/login` or via the auth modal.
+2. Update the user role directly in MongoDB Atlas or shell:
+   ```javascript
+   db.users.updateOne(
+     { email: "admin@example.com" },
+     { $set: { role: "admin" } }
+   )
+   ```
+
+---
+
+## 🚀 Usage & Scripts
+
+Run the following scripts via `npm`:
 
 ```bash
-# Start the development server
+# Start Development Server
 npm run dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
-## Production Build
-
-```bash
-# Build for production
+# Build Production Bundle
 npm run build
 
-# Start the production server
+# Start Production Server
 npm start
+
+# Run Code Linter
+npm run lint
 ```
 
----
-
-## Stripe Setup
-
-1. Create a [Stripe account](https://dashboard.stripe.com/register).
-2. Copy your **Publishable Key** and **Secret Key** from the Stripe Dashboard → Developers → API Keys.
-3. Set up a webhook endpoint pointing to `https://your-domain.com/api/webhooks/stripe`.
-4. Subscribe to the `checkout.session.completed` event.
-5. Copy the **Webhook Signing Secret** and add it to `STRIPE_WEBHOOK_SECRET`.
-
-```bash
-# For local testing with Stripe CLI
-stripe listen --forward-to localhost:3000/api/webhooks/stripe
-```
+Open [http://localhost:3000](http://localhost:3000) to view the storefront in your browser.
 
 ---
 
-## Cloudinary Setup
+## 📡 API Reference
 
-1. Create a [Cloudinary account](https://cloudinary.com/users/register_free).
-2. Navigate to Dashboard → Settings → Access Keys.
-3. Copy `Cloud Name`, `API Key`, and `API Secret` into your environment variables.
-4. Product images upload to `gravity-shop/images/`.
-5. 3D models (GLB files) upload to `gravity-shop/models/`.
-
----
-
-## MongoDB Setup
-
-1. Create a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) cluster.
-2. Create a database user with read/write permissions.
-3. Whitelist your IP address (or use `0.0.0.0/0` for development).
-4. Copy the connection string into `MONGODB_URI`.
-5. The application automatically creates these collections on first use:
-   - `users`
-   - `products`
-   - `orders`
-   - `settings`
-
----
-
-## Admin Dashboard
-
-Access the admin dashboard at `/admin` after logging in with an admin account.
-
-To create the first admin user, register a normal account and then update the role directly in MongoDB:
-
-```javascript
-db.users.updateOne(
-  { email: "your-email@example.com" },
-  { $set: { role: "admin" } }
-)
-```
-
-### Admin Pages
-
-| Page | Route | Functionality |
-|------|-------|---------------|
-| Dashboard | `/admin` | Overview with quick stats |
-| Products | `/admin/products` | CRUD with image/model uploads |
-| Inventory | `/admin/inventory` | Stock levels and low-stock alerts |
-| Orders | `/admin/orders` | Status management and filtering |
-| Users | `/admin/users` | Search, pagination, role toggle, activation |
-| Analytics | `/admin/analytics` | Revenue charts, top products, trends |
-| Settings | `/admin/settings` | Store, payment, media, email config |
+| Method | Endpoint | Access | Description |
+|---|---|---|---|
+| `POST` | `/api/auth/register` | Public | Register a new customer account |
+| `POST` | `/api/auth/login` | Public | Authenticate and issue HTTP-only JWT |
+| `GET` | `/api/products` | Public | Fetch list of active products |
+| `GET` | `/api/search` | Public | Full-text product search endpoint |
+| `POST` | `/api/checkout` | Customer | Initialize Stripe Checkout Session |
+| `POST` | `/api/webhooks/stripe` | Stripe | Webhook for payment fulfillment |
+| `GET` | `/api/health` | Public | System status check |
+| `GET` | `/api/admin/products` | Admin | Retrieve product inventory |
+| `POST` | `/api/admin/products` | Admin | Create product with images/3D models |
+| `GET` | `/api/admin/orders` | Admin | Fetch customer orders |
+| `PATCH` | `/api/admin/orders` | Admin | Update fulfillment status |
+| `GET` | `/api/admin/inventory` | Admin | Fetch stock levels |
+| `PATCH` | `/api/admin/inventory` | Admin | Adjust stock quantities |
+| `GET` | `/api/admin/users` | Admin | Paginated list of users |
+| `PATCH` | `/api/admin/users/[id]`| Admin | Modify user role / status |
+| `GET` | `/api/admin/analytics` | Admin | Aggregated sales metrics |
+| `POST` | `/api/admin/upload` | Admin | Cloudinary media uploader |
 
 ---
 
-## API Routes
+## 📜 License
 
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| `POST` | `/api/auth/register` | Public | Create a new user account |
-| `POST` | `/api/auth/login` | Public | Authenticate and receive JWT |
-| `GET` | `/api/products` | Public | List all products |
-| `GET` | `/api/search` | Public | Full-text product search |
-| `POST` | `/api/checkout` | User | Create a Stripe Checkout Session |
-| `POST` | `/api/webhooks/stripe` | Stripe | Handle payment webhooks |
-| `GET` | `/api/health` | Public | Service connectivity status |
-| `GET` | `/api/admin/products` | Admin | List products (admin view) |
-| `POST` | `/api/admin/products` | Admin | Create a new product |
-| `GET` | `/api/admin/orders` | Admin | List all orders |
-| `PATCH` | `/api/admin/orders` | Admin | Update order status |
-| `GET` | `/api/admin/inventory` | Admin | Get inventory levels |
-| `PATCH` | `/api/admin/inventory` | Admin | Update stock quantities |
-| `GET` | `/api/admin/users` | Admin | List users with pagination |
-| `PATCH` | `/api/admin/users/[id]` | Admin | Update user role or status |
-| `GET` | `/api/admin/analytics` | Admin | Aggregated business metrics |
-| `GET` | `/api/admin/settings` | Admin | Read store settings |
-| `PUT` | `/api/admin/settings` | Admin | Update store settings |
-| `POST` | `/api/admin/upload` | Admin | Upload images or 3D models |
-
----
-
-## Security
-
-### Authentication Flow
-1. User submits credentials to `/api/auth/login`.
-2. Server verifies password hash with bcrypt.
-3. Server signs a JWT containing `userId`, `email`, and `role`.
-4. Token is returned and stored as an HTTP-only cookie.
-
-### Middleware Protection
-All routes matching `/admin/*` and `/api/admin/*` are intercepted by Edge Middleware that:
-- Extracts the JWT from cookies
-- Cryptographically verifies the signature using `jose` (`jwtVerify`)
-- Validates token expiration
-- Checks that `role === "admin"`
-- Returns `401` or `403` for unauthorized requests
-
-### Webhook Security
-Stripe webhook payloads are verified using `stripe.webhooks.constructEvent()` with the webhook signing secret before any database mutations occur.
-
-### Rate Limiting
-Sensitive endpoints are protected by a sliding-window rate limiter (10 requests / 10 seconds) powered by Upstash Redis.
-
----
-
-## Performance Optimizations
-
-- **Dynamic Imports** — Three.js canvas components are loaded with `next/dynamic` to avoid blocking initial page render
-- **Lazy 3D Engine** — The WebGL renderer only initializes when 3D components scroll into view
-- **MongoDB Connection Pooling** — Singleton connection pattern prevents connection exhaustion in serverless
-- **Aggregation Pipelines** — Analytics queries use `$lookup` instead of per-document queries
-- **Atomic Transactions** — Stripe fulfillment uses `mongoose.startSession()` with `withTransaction()` to prevent partial writes
-- **Image Optimization** — Product images served through Cloudinary CDN with automatic format selection
-- **SEO** — Auto-generated `robots.txt` and `sitemap.xml` routes
-
----
-
-## Deployment
-
-### Vercel (Recommended)
-
-1. Push the repository to GitHub.
-2. Import the project in [Vercel](https://vercel.com).
-3. Set the **Install Command** to `npm install --legacy-peer-deps`.
-4. Add all environment variables in Vercel Project Settings.
-5. Deploy.
-
-```mermaid
-graph LR
-    A["git push"] --> B["GitHub"]
-    B --> C["Vercel Build"]
-    C --> D["Edge Network"]
-    D --> E["Live Site"]
-    E --> F["MongoDB Atlas"]
-    E --> G["Stripe"]
-    E --> H["Cloudinary"]
-    E --> I["Upstash Redis"]
-```
-
-### Post-Deployment
-
-- Register a Stripe webhook endpoint pointing to `https://your-domain.vercel.app/api/webhooks/stripe`.
-- Subscribe to `checkout.session.completed`.
-- Update `STRIPE_WEBHOOK_SECRET` with the production signing secret.
-
----
-
-## Screenshots
-
-> Screenshots of the storefront, product pages, and admin dashboard can be added here.
-
-| View | Screenshot |
-|------|-----------|
-| Homepage | *Coming soon* |
-| Product Detail (3D) | *Coming soon* |
-| Cart Drawer | *Coming soon* |
-| Admin Dashboard | *Coming soon* |
-| Admin Products | *Coming soon* |
-| Admin Analytics | *Coming soon* |
-
----
-
-## Known Limitations
-
-- **No Email Notifications** — Order confirmations and shipping updates are not sent via email. The settings page includes an email configuration section for future integration.
-- **No Guest Checkout** — Users must register or log in before purchasing.
-- **No Wishlist** — There is no saved-items or favorites feature.
-- **No Multi-Currency** — Stripe sessions are created in a single currency.
-- **No Image Cropping** — Uploaded images are stored as-is without client-side cropping.
-- **GLB Model Dependency** — 3D product previews require a GLB model URL in the product record; products without one display a static image fallback.
-
----
-
-## Roadmap
-
-- [ ] Email notifications via SendGrid or Resend
-- [ ] Guest checkout flow
-- [ ] Wishlist and saved items
-- [ ] Product reviews and ratings
-- [ ] Multi-currency support
-- [ ] Order tracking with shipping integration
-- [ ] Bulk product import (CSV)
-- [ ] Client-side image cropping before upload
-
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+Distributed under the **MIT License**. See `LICENSE` for more information.
 
 ---
 
 <p align="center">
-  Built with Next.js, Three.js, and Stripe
+  Crafted with ❤️ by <a href="https://github.com/AKASH-KALSARIYA">AKASH KALSARIYA</a>
 </p>
-#   G r a v i t y - S h o p  
- 
